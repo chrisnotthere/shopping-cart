@@ -1,11 +1,23 @@
+import { Link } from 'react-router-dom';
 
 function Nav() {
+  const navStyle = {
+    color: 'white',
+    textDecoration: 'none' 
+  };
+
   return (
     <nav>
-      <h3>Logo</h3>
-      <ul>
-        <li>About</li>
-        <li>Shop</li>
+      <Link style={navStyle} to='/'>
+        <h3>Logo</h3>
+      </Link>
+      <ul className='nav-links'>
+        <Link style={navStyle} to='/products'>
+          <li>Products</li>
+        </Link>
+        <Link style={navStyle} to='/cart'>
+          <li>Cart</li>
+        </Link>
       </ul>
     </nav>
   );
