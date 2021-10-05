@@ -2,20 +2,11 @@
   margin-top: 8rem;
   background-color: rgba(129, 221, 221, 0.5);
   width: 15%;
-
   border-radius: 15px;
-  /* border: 2px solid red; */
-  /* padding: 10px; */
-  /* border-radius: 25px; */
 }
 
 .store-title h1 {
   color: rgb(39, 36, 36);
-  /* font-family: Georgia, 'Times New Roman', Times, serif; */
-}
-
-.store-desc {
-  /* margin: 2rem; */
 }
 
 main {
@@ -29,7 +20,6 @@ main {
 }
 
 body {
-  /* background-color: aqua; */
   background-image: url('../images/bg2.jpg');
 }
 
@@ -40,8 +30,4 @@ h3,
 h4,
 h5 {
   color: aliceblue;
-}
-
-.view-products {
-  padding: 5rem;
 }

@@ -6,7 +6,7 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  min-height: 10vh;
+  min-height: 8vh;
   background-color: rgb(44, 53, 53);
   color: white;
 }
@@ -16,7 +16,6 @@ nav {
   width: 50%;
   display: flex;
   justify-content: space-around;
-  align-items: center;
 }
 
 nav li {
@@ -26,5 +25,4 @@ nav li {
 
 nav li:hover {
   color: aqua;
-  /* font-size: 1.2rem; */
 }
