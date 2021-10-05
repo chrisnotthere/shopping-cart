@@ -10,7 +10,7 @@ function Nav() {
   return (
     <nav>
       <Link style={navStyle} to='/'>
-        <h3 className='logo'>Storezilla</h3>
+        <h4 className='logo'>Storezilla</h4>
       </Link>
       <ul className='nav-links'>
         <Link style={navStyle} to='/'>
