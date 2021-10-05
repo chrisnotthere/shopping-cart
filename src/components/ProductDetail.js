@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import * as ReactBootstrap from 'react-bootstrap';
 
 function ProductDetail({match}) {
   useEffect(() => {
@@ -7,22 +8,38 @@ function ProductDetail({match}) {
 
   const [product, setProduct] = useState({
     // to fix 'sprites is not defined'
-    sprites: {}
+    //sprites: {}
   });
 
+  const [loading, setLoading] = useState(false);
+
+
   const fetchProduct = async () => {
-    const fetchItem = await fetch(`https://pokeapi.co/api/v2/pokemon/${match.params.id}`);
-    const product = await fetchItem.json();
+    try{
+      const fetchItem = await fetch(`https://fakestoreapi.com/products/${match.params.id}`);
+      const product = await fetchItem.json();
 
-    setProduct(product);
-    console.log(product);
-
+      setProduct(product);
+      console.log(product);
+      setLoading(true);
+    } 
+    catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <div className="Products">
-      <h1>{product.name}</h1>
-      <img src={product.sprites.front_default} alt='' width='150px' />
+
+      {loading ? 
+        <div>
+          <h1>{product.title}</h1>
+          <img src={product.image} alt='' width='250px' />
+          <p>${product.price}</p>
+          <p>{product.description}</p>
+        </div> 
+      : <ReactBootstrap.Spinner animation='border' />}
+
     </div>
   );
 }
