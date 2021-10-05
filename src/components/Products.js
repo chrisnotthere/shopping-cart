@@ -37,7 +37,7 @@ function Products() {
             <Link to={`products/${item.id}`}>{item.title}</Link>
           </h4>
         ))
-      : <ReactBootstrap.Spinner animation='border' />}
+      : <ReactBootstrap.Spinner animation='border' variant="success" />}
 
     </div>
   );

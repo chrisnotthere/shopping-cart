@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 import * as ReactBootstrap from 'react-bootstrap';
 
@@ -38,7 +39,7 @@ function ProductDetail({match}) {
           <p>${product.price}</p>
           <p>{product.description}</p>
         </div> 
-      : <ReactBootstrap.Spinner animation='border' />}
+      : <ReactBootstrap.Spinner animation='border' variant="success" />}
 
     </div>
   );
