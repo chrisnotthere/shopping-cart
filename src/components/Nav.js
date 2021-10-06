@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
-import { FaShoppingCart } from "react-icons/fa";
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import { Badge, IconButton } from "@material-ui/core";
+import styled from "styled-components";
 
-function Nav() {
+const getTotalItems = (items) =>
+items.reduce((acc, item) => acc + item.amount, 0);
+
+function Nav({setCartOpen, cartItems}) {
   const navStyle = {
     color: 'white',
     textDecoration: 'none' 
@@ -19,12 +24,25 @@ function Nav() {
         <Link style={navStyle} to='/products'>
           <li>Products</li>
         </Link>
-        <Link style={navStyle} to='/cart'>
-          <li>Cart <FaShoppingCart /> (0)</li>
-        </Link>
+        <StyledButton onClick={() => setCartOpen(true)}>
+          <Badge badgeContent={getTotalItems(cartItems)} color='error'>
+            <AddShoppingCartIcon />
+          </Badge>
+        </StyledButton> 
       </ul>
     </nav>
   );
 }
+
+const StyledButton = styled(IconButton)`
+  // position: fixed;
+  // z-index: 100;
+  // right: 20px;
+  // top: 20px;
+  color: white;
+
+`;
+
+
 
 export default Nav;

@@ -5,15 +5,65 @@ import Cart from './components/Cart';
 import Home from './components/Home';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
 import ProductDetail from './components/ProductDetail';
+import { Drawer } from "@material-ui/core";
+import { useState } from "react";
 
 function App() {
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = (clickedItem) => {
+    setCartItems(prev => {
+      //is the item already added in the cart?
+      const isItemInCart = prev.find(item => item.id === clickedItem.id);
+
+      if (isItemInCart) {
+        return prev.map(item =>
+          item.id === clickedItem.id
+            ? { ...item, amount: item.amount + 1 }
+            : item
+        );
+      }
+      //first time the item is added
+      return [...prev, { ...clickedItem, amount: 1 }];
+    });
+  };
+
+  const handleRemoveFromCart = (id) => {
+    setCartItems(prev =>
+      prev.reduce((acc, item) => {
+        if (item.id === id) {
+          if (item.amount === 1) return acc;
+          return [...acc, { ...item, amount: item.amount - 1 }];
+        } else {
+          return [...acc, item];
+        }
+      }, [])
+    );
+  };
+
+
   return (
     <Router>
       <div className="App">
-        <Nav />
+        <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
+          <Cart
+            cartItems={cartItems}
+            addToCart={handleAddToCart}
+            removeFromCart={handleRemoveFromCart}
+          />
+        </Drawer>
+        <Nav 
+          setCartOpen={setCartOpen}
+          cartItems={cartItems}
+        />
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/products' exact component={Products} />
+          <Route 
+            path='/products' 
+            exact 
+            component={() => <Products handleAddToCart={handleAddToCart} />} 
+          />
           <Route path='/cart' component={Cart} />
           <Route path='/products/:id' component={ProductDetail}/>
         </Switch>
