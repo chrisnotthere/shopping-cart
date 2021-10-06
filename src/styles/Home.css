@@ -1,12 +1,14 @@
 .store-title {
   margin-top: 8rem;
   background-color: rgba(129, 221, 221, 0.5);
-  width: 15%;
+  /* max-width: 95%; */
+  min-width: 30%;
   border-radius: 15px;
 }
 
 .store-title h1 {
-  color: rgb(39, 36, 36);
+  /* color: rgb(39, 36, 36); */
+  /* padding: 2rem; */
 }
 
 main {
@@ -20,7 +22,15 @@ main {
 }
 
 body {
-  background-image: url('../images/bg2.jpg');
+  /* background-image: url('../images/bg.jpg'); */
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+
+  height: 100vh;
 }
 
 p,
@@ -30,4 +40,10 @@ h3,
 h4,
 h5 {
   color: aliceblue;
+}
+
+h1,
+.store-desc {
+  margin: 4rem;
+  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
 }
