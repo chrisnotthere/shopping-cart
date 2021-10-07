@@ -10,7 +10,7 @@ import { useState } from "react";
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [items, setItems] = useState([]);
+  const [productItems, setProductItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const handleAddToCart = (clickedItem) => {
@@ -44,6 +44,11 @@ function App() {
     );
   };
 
+  const handleCheckout= () => {
+    alert('Thank you for shopping with us!');
+    setCartItems([]);
+  }
+
   return (
     <Router>
       <div className="App">
@@ -52,6 +57,7 @@ function App() {
             cartItems={cartItems}
             addToCart={handleAddToCart}
             removeFromCart={handleRemoveFromCart}
+            checkout={handleCheckout}
           />
         </Drawer>
         <Nav 
@@ -65,8 +71,8 @@ function App() {
             exact 
             component={() => <Products 
                 handleAddToCart={handleAddToCart} 
-                items={items}
-                setItems={setItems}
+                items={productItems}
+                setItems={setProductItems}
                 loading={loading}
                 setLoading={setLoading}
               />} 
