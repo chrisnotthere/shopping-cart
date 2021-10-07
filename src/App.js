@@ -11,11 +11,14 @@ import { useState } from "react";
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [items, setItems] = useState([]); //i think the problem is when setItems is being called...
+  const [loading, setLoading] = useState(false);
 
   const handleAddToCart = (clickedItem) => {
     setCartItems(prev => {
       //is the item already added in the cart?
       const isItemInCart = prev.find(item => item.id === clickedItem.id);
+      console.log(clickedItem);
 
       if (isItemInCart) {
         return prev.map(item =>
@@ -42,6 +45,18 @@ function App() {
     );
   };
 
+  // const fetchProducts = async () => {
+  //   try{
+  //     const data = await fetch(`https://fakestoreapi.com/products/`);
+  //     const items = await data.json();
+  //     console.log(items);
+  //     setLoading(true);
+  //     setItems(items);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+
 
   return (
     <Router>
@@ -62,7 +77,14 @@ function App() {
           <Route 
             path='/products' 
             exact 
-            component={() => <Products handleAddToCart={handleAddToCart} />} 
+            component={() => <Products 
+                handleAddToCart={handleAddToCart} 
+                items={items}
+                setItems={setItems}
+                loading={loading}
+                setLoading={setLoading}
+                // fetchProducts={fetchProducts}
+              />} 
           />
           <Route path='/cart' component={Cart} />
           <Route path='/products/:id' component={ProductDetail}/>

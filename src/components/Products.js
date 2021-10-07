@@ -1,29 +1,33 @@
 import React, {useState, useEffect} from 'react';
-// import { Link } from 'react-router-dom';
-// import * as ReactBootstrap from 'react-bootstrap';
-// import { Card, Button } from 'react-bootstrap';
 import { CircularProgress, Grid, Drawer, Badge } from "@material-ui/core";
 import ProductItem from './ProductItem';
 import styled from "styled-components";
 
-function Products({ handleAddToCart }) {
+function Products({ handleAddToCart, items, setItems, loading, setLoading, }) {
+  
   useEffect(() => {
     fetchProducts();
+    //loadProducts();
   }, []);
 
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
+  //moved state from here to App.js
+  // const [items, setItems] = useState([]);
+  // const [loading, setLoading] = useState(false);
+
+  const loadProducts = async () => {
+    setLoading(true);
+    setItems(await fetchProducts());
+  }
 
   const fetchProducts = async () => {
-    try{
-      const data = await fetch(`https://fakestoreapi.com/products/`);
-      const items = await data.json();
-      console.log(items);
-      setLoading(true);
-      setItems(items);
-    } catch (e) {
-      console.log(e);
-    }
+    
+    const response = await fetch(`https://fakestoreapi.com/products/`);
+    const data = await response.json();
+    console.log(data);
+    setLoading(true);
+    setItems(data);
+    //return data;
+
   }
 
   return (
