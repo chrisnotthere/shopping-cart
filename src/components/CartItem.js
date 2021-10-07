@@ -6,7 +6,7 @@ const CartItem= ({ item, addToCart, removeFromCart}) => (
     <div>
       <h4>{item.title}</h4>
       <div className='information'>
-        <p>Price: ${item.price}</p>
+        <p>Price: ${(item.price).toFixed(2)}</p>
         <p>Total: ${(item.amount * item.price).toFixed(2)}</p>
       </div>
       <div className='buttons'>
