@@ -39,8 +39,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between:
   font-family: arial, helvetica, sans-serif;
-  // border-bottom: 1px solid lightblue;
-  // padding: 0.1rem;
+  margin-bottom: 1rem;
 
   div {
     flex: 1;
@@ -56,5 +55,9 @@ const Wrapper = styled.div`
     max-width: 80px;
     object-fit: cover;
     margin-left: 40px;
+  }
+
+  p {
+    margin: 0.25rem;
   }
 `;
