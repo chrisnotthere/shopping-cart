@@ -4,21 +4,20 @@ import Products from './components/Products';
 import Cart from './components/Cart';
 import Home from './components/Home';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
-import ProductDetail from './components/ProductDetail';
 import { Drawer } from "@material-ui/core";
 import { useState } from "react";
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [items, setItems] = useState([]); //i think the problem is when setItems is being called...
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const handleAddToCart = (clickedItem) => {
     setCartItems(prev => {
       //is the item already added in the cart?
       const isItemInCart = prev.find(item => item.id === clickedItem.id);
-      console.log(clickedItem);
+      //console.log(clickedItem);
 
       if (isItemInCart) {
         return prev.map(item =>
@@ -45,19 +44,6 @@ function App() {
     );
   };
 
-  // const fetchProducts = async () => {
-  //   try{
-  //     const data = await fetch(`https://fakestoreapi.com/products/`);
-  //     const items = await data.json();
-  //     console.log(items);
-  //     setLoading(true);
-  //     setItems(items);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
-
-
   return (
     <Router>
       <div className="App">
@@ -83,11 +69,9 @@ function App() {
                 setItems={setItems}
                 loading={loading}
                 setLoading={setLoading}
-                // fetchProducts={fetchProducts}
               />} 
           />
           <Route path='/cart' component={Cart} />
-          <Route path='/products/:id' component={ProductDetail}/>
         </Switch>
       </div>
     </Router>

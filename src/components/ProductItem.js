@@ -15,7 +15,6 @@ const ProductItem = ({ item, handleAddToCart }) => (
 
 export default ProductItem;
 
-
 const ProductWrapper = styled.div`
   display: flex;
   justify-content: space-between;

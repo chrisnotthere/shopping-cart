@@ -50,7 +50,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid lightblue;
-
   }
 
   img {
@@ -58,9 +57,4 @@ const Wrapper = styled.div`
     object-fit: cover;
     margin-left: 40px;
   }
-
-  Button{
-    // padding:1rem;
-  }
 `;
-

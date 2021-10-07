@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { CircularProgress, Grid, Drawer, Badge } from "@material-ui/core";
+import React, { useEffect } from 'react';
+import { CircularProgress, Grid } from "@material-ui/core";
 import ProductItem from './ProductItem';
 import styled from "styled-components";
 
@@ -7,33 +7,20 @@ function Products({ handleAddToCart, items, setItems, loading, setLoading, }) {
   
   useEffect(() => {
     fetchProducts();
-    //loadProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  //moved state from here to App.js
-  // const [items, setItems] = useState([]);
-  // const [loading, setLoading] = useState(false);
-
-  const loadProducts = async () => {
-    setLoading(true);
-    setItems(await fetchProducts());
-  }
-
   const fetchProducts = async () => {
-    
     const response = await fetch(`https://fakestoreapi.com/products/`);
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     setLoading(true);
     setItems(data);
-    //return data;
-
   }
 
   return (
     <ProductWrapper>
       <h1 className='products-title'>Products</h1>
-
       {loading ? 
         <Grid container spacing={3}>
           {items.map(item => (
@@ -49,7 +36,6 @@ function Products({ handleAddToCart, items, setItems, loading, setLoading, }) {
           </div>
       }
     </ProductWrapper>
-
   );
 }
 
@@ -59,5 +45,4 @@ const ProductWrapper = styled.div`
   h1{ 
     margin: 2rem;
   }
-
 `;

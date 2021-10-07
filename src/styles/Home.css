@@ -1,14 +1,8 @@
 .store-title {
   margin-top: 8rem;
   background-color: rgba(129, 221, 221, 0.5);
-  /* max-width: 95%; */
   min-width: 30%;
   border-radius: 15px;
-}
-
-.store-title h1 {
-  /* color: rgb(39, 36, 36); */
-  /* padding: 2rem; */
 }
 
 main {
@@ -22,7 +16,6 @@ main {
 }
 
 body {
-  /* background-image: url('../images/bg.jpg'); */
   background: rgb(63, 94, 251);
   background: radial-gradient(
     circle,

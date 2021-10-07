@@ -5,12 +5,8 @@ function Cart({ cartItems, addToCart, removeFromCart }) {
   const calculateTotal = (items) =>
     items.reduce((acc, item) => acc + item.amount * item.price, 0);
 
-
   return (
-    // <div className="Cart">
-    //   <h3>your shopping cart</h3>
-    // </div>
-    <Wrapper>
+    <CartWrapper>
     <h2>Your Shopping Cart</h2>
     {cartItems.length === 0 ? <p>No items in cart.</p> : null}
     {cartItems.map(item => (
@@ -22,13 +18,13 @@ function Cart({ cartItems, addToCart, removeFromCart }) {
       />
     ))}
     <h3>Order Total: ${calculateTotal(cartItems).toFixed(2)}</h3>
-  </Wrapper>
+  </CartWrapper>
   );
 }
 
 export default Cart;
 
-const Wrapper = styled.aside`
+const CartWrapper = styled.aside`
   font-family: Arial, Helvetica, sans-serif;
   width: 500px;
   padding: 20px;
@@ -46,7 +42,4 @@ const Wrapper = styled.aside`
   h2 {
     border-bottom: 1px solid lightblue;
   }
-
-
 `;
-

@@ -43,6 +43,4 @@ const StyledButton = styled(IconButton)`
 
 `;
 
-
-
 export default Nav;
