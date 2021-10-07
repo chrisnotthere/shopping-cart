@@ -66,6 +66,7 @@ function App() {
         />
         <Switch>
           <Route path='/' exact component={Home} />
+          <Route path='/shopping-cart' exact component={Home} />
           <Route 
             path='/products' 
             exact 
